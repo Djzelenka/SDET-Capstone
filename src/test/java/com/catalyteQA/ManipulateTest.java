@@ -27,7 +27,11 @@ public class ManipulateTest {
     @Test //annotation allows the test runner know that this is a test
     public void manipulate(){
         WebElement id2 = driver.findElement(By.cssSelector("#add-todo"));
+
+        // Type Homework into the add-todo field
         id2.sendKeys("Homework");
+
+        // Send the enter key
         id2.sendKeys(Keys.ENTER);
 
         // assert that Homework is in the todo list
