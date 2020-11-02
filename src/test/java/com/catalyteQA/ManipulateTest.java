@@ -1,15 +1,18 @@
 package com.catalyteQA;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.junit.Assert.assertEquals;
 
-public class NavigationTest {
+
+public class ManipulateTest {
     static WebDriver driver;
 
     @BeforeClass
@@ -22,9 +25,13 @@ public class NavigationTest {
     }
 
     @Test //annotation allows the test runner know that this is a test
-    public void navigate(){
-        // assert that the title starts with Selenium
-        assertEquals("Title is correct", driver.getTitle(), "TodoMVC - Test automation in Cypress");
+    public void manipulate(){
+        WebElement id2 = driver.findElement(By.cssSelector("#add-todo"));
+        id2.sendKeys("Homework");
+        id2.sendKeys(Keys.ENTER);
+
+        // assert that Homework is in the todo list
+        assertEquals("Homework is not found in the list", driver.findElement(By.cssSelector(".view")).getText(), "Homework");
     }
 
     @AfterClass
