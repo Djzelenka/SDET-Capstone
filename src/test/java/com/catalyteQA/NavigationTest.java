@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class MyFirstChromeDriverTest {
+public class NavigationTest {
 
     @Test //annotation allows the test runner know that this is a test
     public void driverIsKing(){

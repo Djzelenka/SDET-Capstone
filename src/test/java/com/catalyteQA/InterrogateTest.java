@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class MyFirstFirefoxDriverTest {
+public class InterrogateTest {
 
     @Test //annotation allows the test runner know that this is a test
     public void driverIsKing() {
