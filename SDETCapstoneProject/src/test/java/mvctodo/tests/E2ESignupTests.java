@@ -2,7 +2,6 @@ package mvctodo.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import mvctodo.helpers.VerifyEmail;
 import mvctodo.pages.Signup;
 import org.junit.After;
 import org.junit.BeforeClass;
@@ -48,6 +47,15 @@ public class E2ESignupTests {
     assertEquals(loginMessage.getAttribute("style"), "");
   }
 
+  @Test
+  public void signupEmailChecked() {
+    Signup signup = new Signup(driver);
+    signup.signUpEmailConfirmation("testEmail@testing.com", "password");
+    WebElement loginMessage = driver.findElement(By.id("loginMessage"));
+    assertEquals(driver.getCurrentUrl(), "http://localhost:3000/");
+    assertEquals(loginMessage.getAttribute("style"), "");
+  }
+
 //  @Test
 //  public void signupValidCredentialsEmailCheck() {
 //    Signup signup = new Signup(driver);
@@ -58,7 +66,7 @@ public class E2ESignupTests {
   @Test
   public void invalidCredentials() {
     Signup signup = new Signup(driver);
-    signup.signupNoEmailConfirmation("asdf3","password");
+    signup.signupNoEmailConfirmation("asdf3", "password");
     WebElement errorMessage = driver.findElement(By.id("errorMessage"));
     assertEquals(driver.getCurrentUrl(), SIGNUP_URL);
     assertEquals(errorMessage.getAttribute("style"), "");
@@ -85,9 +93,9 @@ public class E2ESignupTests {
   @Test
   public void signupWithSameEmail() {
     Signup signup = new Signup(driver);
-    signup.signupNoEmailConfirmation("TestEmail@Test.com","password");
+    signup.signupNoEmailConfirmation("TestEmail@Test.com", "password");
     driver.navigate().to(SIGNUP_URL);
-    signup.signupNoEmailConfirmation("TestEmail@Test.com","password");
+    signup.signupNoEmailConfirmation("TestEmail@Test.com", "password");
     WebElement errorMessage = driver.findElement(By.id("errorMessage"));
     assertEquals(driver.getCurrentUrl(), SIGNUP_URL);
     assertEquals(errorMessage.getAttribute("style"), "");

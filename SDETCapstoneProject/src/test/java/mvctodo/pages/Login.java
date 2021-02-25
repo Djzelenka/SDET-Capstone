@@ -29,25 +29,25 @@ public class Login {
     driver.get(PAGE_URL);
     PageFactory.initElements(driver, this);
   }
-  
+
   public void submit_login(String email, String password) {
     emailInput.sendKeys(email);
     passwordInput.sendKeys(password);
     submitButton.click();
   }
-  
+
   public void hitSubmitButton() {
     submitButton.click();
   }
-  
-  public void submitLoginNoPassword(String email){
+
+  public void submitLoginNoPassword(String email) {
     emailInput.sendKeys(email);
     submitButton.click();
   }
-  
-  public void submiLoginNoEmail(String password){
+
+  public void submiLoginNoEmail(String password) {
     passwordInput.sendKeys(password);
     submitButton.click();
   }
-  
+
 }

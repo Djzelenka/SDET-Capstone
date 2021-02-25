@@ -71,6 +71,19 @@ public class E2EHomePageTests {
   }
 
   @Test
+  public void completedTodoUnchecked() {
+    HomePage home = new HomePage(driver);
+    home.submit_add_todo("something");
+    home.click_todo_check();
+    WebElement todo = driver.findElement(By.cssSelector("#todo-list > li"));
+    todo.getAttribute("style");
+    assertEquals(todo.getAttribute("className"), "todo completed");
+    home.click_todo_check();
+    assertEquals(todo.getAttribute("className"), "todo");
+    home.click_destroy_todo();
+  }
+
+  @Test
   public void listDoesNotReorder() {
     HomePage home = new HomePage(driver);
     home.submit_add_todo("something");
@@ -87,16 +100,25 @@ public class E2EHomePageTests {
     home.click_destroy_todo();
   }
 
+  @Test
+  public void navigateAwayFromPage() {
+    HomePage home = new HomePage(driver);
+    home.submit_add_todo("something");
+    WebElement todo = driver.findElement(By.cssSelector(".view"));
+    assertEquals(todo.getText(), "something");
+    driver.navigate().to("http://localhost:3000/login");
+    assertEquals(driver.getCurrentUrl(), "http://localhost:3000/login");
+    driver.navigate().to("http://localhost:3000");
+    WebElement sameTodo = driver.findElement(By.cssSelector(".view"));
+    assertEquals(driver.getCurrentUrl(), "http://localhost:3000/");
+    assertEquals(sameTodo.getText(), "something");
+    home.click_destroy_todo();
+  }
   
 
   @AfterClass
   public static void close()  {
     driver.close();
     driver.quit();
-
-//    Unsure if this will correct the clean-up issue.
-//    driver.get("chrome://settings/clearBrowserData");
-//    Thread.sleep(10000);
-//    driver.findElement(By.xpath("//*[@id='clearBrowsingDataConfirm']")).click();
   }
 }

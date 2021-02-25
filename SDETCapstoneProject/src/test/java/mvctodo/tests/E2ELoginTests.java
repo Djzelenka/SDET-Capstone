@@ -18,7 +18,7 @@ public class E2ELoginTests {
   static WebDriver driver;
 
   private static String PAGE_URL = "http://localhost:3000/login";
-//  private static String SEED_URL = "http://localhost:3000/accounts/seed";
+  //  private static String SEED_URL = "http://localhost:3000/accounts/seed";
   private static String SIGNUP_URL = "http://localhost:3000/signup";
 
   @BeforeClass
@@ -39,7 +39,7 @@ public class E2ELoginTests {
   }
 
   @Test
-  public void badUrlCheck(){
+  public void badUrlCheck() {
     driver.navigate().to("http://localhost:3000000/login");
     assertEquals(driver.getCurrentUrl(), PAGE_URL);
   }
@@ -67,7 +67,7 @@ public class E2ELoginTests {
   }
 
   @Test
-  public void loginNoCredentials(){
+  public void loginNoCredentials() {
     Login login = new Login(driver);
     login.hitSubmitButton();
     WebElement errorMessage = driver.findElement(By.id("errorMessage"));

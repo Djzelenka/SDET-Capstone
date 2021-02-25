@@ -37,19 +37,19 @@ public class Signup {
     passwordInput.sendKeys(password);
     signupButton.click();
   }
-  
+
   public void signUpEmailConfirmation(String email, String password) {
     emailInput.sendKeys(email);
     passwordInput.sendKeys(password);
     emailCheckBox.click();
     signupButton.click();
   }
-  
+
   public void signupNoEmail(String password) {
     passwordInput.sendKeys(password);
     signupButton.click();
   }
-  
+
   public void signupNoPassword(String email) {
     emailInput.sendKeys(email);
     signupButton.click();

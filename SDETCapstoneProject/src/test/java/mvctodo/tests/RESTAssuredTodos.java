@@ -24,7 +24,7 @@ public class RESTAssuredTodos extends FunctionalTest {
   }
 
   @Test
-  public void postSignupEmailInUse(){
+  public void postSignupEmailInUse() {
     Account account = new Account();
     account.setEmail("email@test.com");
     account.setPassword("password");
@@ -45,7 +45,7 @@ public class RESTAssuredTodos extends FunctionalTest {
   }
 
   @Test
-  public void postSignupNoPassword(){
+  public void postSignupNoPassword() {
     Account account = new Account();
     account.setEmail("email@test.com");
 
@@ -55,7 +55,7 @@ public class RESTAssuredTodos extends FunctionalTest {
 
 
   @Test
-  public void postLogin(){
+  public void postLogin() {
     Account account = new Account();
     account.setEmail("email@test.com");
     account.setPassword("password");
@@ -115,13 +115,13 @@ public class RESTAssuredTodos extends FunctionalTest {
   }
 
   @Test
-  public void deleteAllTodos(){
+  public void deleteAllTodos() {
     given().when().delete("/todos").then()
         .statusCode(204);
   }
 
   @After
-  public void close(){
+  public void close() {
     given().when().post("/reset");
   }
 }

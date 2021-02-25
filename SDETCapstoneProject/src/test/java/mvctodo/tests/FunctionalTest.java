@@ -11,8 +11,7 @@ public class FunctionalTest {
     String port = System.getProperty("server.port");
     if (port == null) {
       RestAssured.port = Integer.valueOf(3000);
-    }
-    else {
+    } else {
       RestAssured.port = Integer.valueOf(port);
     }
 
@@ -23,7 +22,7 @@ public class FunctionalTest {
 //    RestAssured.basePath = basePath;
 
     String baseHost = System.getProperty("server.host");
-    if(baseHost == null) {
+    if (baseHost == null) {
       baseHost = "http://localhost";
     }
     RestAssured.baseURI = baseHost;
